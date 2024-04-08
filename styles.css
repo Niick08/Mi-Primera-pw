@@ -1,55 +1,222 @@
-body {
-    font-family: Arial, sans-serif;
+body, html {
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+#banner h1 a {
+    color: rgb(0, 0, 0);
+    text-decoration: none; /* Elimina el subrayado */
+    font-weight: bold; /*Más grueso, 600, 700, etc */
+    font-family: "Cedarville Cursive", cursive; /*Fuente */
+    transition: color 0.3s ease; /* Suaviza la transición de cambio de color */
+    font-size: 24px; /*Tamaño*/
+}
+
+/* Cambiar el color al pasar el cursor sobre el título */
+#banner h1 a:hover {
+    color: rgb(0, 0, 80);
 }
 
 header {
-    background-color: #ff3366;
+    background-color: #ffffff; /* Color de fondo*/
+    color: #000000;
+    display: flex;
+    justify-content: space-between; /* Separa el banner y la barra de navegación */
+    align-items: baseline; /* Centra elementos verticalmente */
+    padding: 0 10px; /* Añade un poco de padding horizontal */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1000; /* Asegúrate de que el encabezado esté por encima de otros elementos */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra ligera para destacar el encabezado */
+}
+
+header nav ul {
+    list-style-type: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: inline-flex;
+    justify-content: space-around; /* Espacio uniforme entre los enlaces */
+    align-items: center;
+}
+
+header nav ul li a {
+    color: #000000; /* Color del texto para los enlaces */
+    text-decoration: none; /* Eliminar subrayado de enlaces */
+    padding: 10px 20px;
+    transition: color 0.3s; /* Transición suave para el cambio de color */
+}
+
+header nav ul li a:hover {
+    color: #007598;
+    text-decoration: none; /* Subrayado al pasar el mouse */
+}
+
+/* Estilos del contenedor 'hero': Este es el elemento principal que contiene la imagen y el texto */
+#hero {
+    background-image: url('https://images.unsplash.com/photo-1498116069452-debf99cb30f0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaGoto-1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Pongo la imagen de fondo que quiero que ocupe todo el espacio */
+    background-size: cover; /* Hago que la imagen de fondo cubra todo el espacio disponible sin deformarse */
+    background-position: center; /* Centro la imagen de fondo para que se vea bien en cualquier tamaño de pantalla */
+    height: 100vh; /* Establezco la altura de 'hero' para que sea siempre del tamaño total de la altura de la pantalla del usuario */
+    display: flex;
+    flex-direction: row; /* Cambiamos la dirección a fila */
+    justify-content: space-between; /* Alineamos el contenido al final del eje principal (derecha) */
+    align-items: center; /* Mantenemos los elementos centrados verticalmente */
+    position: relative; /* Esto lo necesito para posicionar cualquier cosa dentro de 'hero' en relación a él */
+    padding: 0 50px; /* Ajusta el padding según necesites */
+}
+
+#hero h1 {
+    font-size: 3rem; /* Aumenta el tamaño del título */
     color: white;
-    padding: 20px;
+}
+
+#hero p {
+    font-size: 1.2rem; /* Aumenta el tamaño del párrafo si es necesario */
+    color: white;
+}
+
+.text1 {
+    max-width: 50%; /* Limita el ancho máximo del texto */
+    margin-left: 80px; /* Quita el margen automático de la izquierda */
+}
+
+/* Estilos para '.image1', que es una clase que podría aplicar a una imagen específica dentro de 'hero': */
+.image1 {
+    margin-top: 75px;
+    position: relative; /* Esto permite posicionar cualquier cosa dentro de '.image1' en relación a ella */
+    display: flex; /* Hago que '.image1' se comporte como un bloque pero que se alinee como texto, para más control */
+    width: 100%; /* Establezco el ancho fijo de la imagen, pero esto debería ser flexible dependiendo del diseño general */
+    height: auto; /* Y el alto también, aunque podría ser mejor usar 'auto' si quiero mantener la relación de aspecto */
+    max-width: 50%; /* Ajusta el ancho máximo de la imagen */
+    margin-right: 60px; /* Quita el margen automático de la derecha */
+}
+
+/* Para que la imagen se adapte al tamaño de '.image1': */
+.image1 img {
+    width: 100%; /* Hago que la imagen use todo el ancho de '.image1' */
+    height: auto; /* Y que su altura se ajuste automáticamente para mantener la proporción */
+    max-width: 100%; /* Asegúrate de que la imagen no exceda el ancho de su contenedor */
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrar el overlay exactamente en el medio de la imagen */
+    width: 120px; /* Ancho del cuadrito */
+    height: 40px; /* Altura del cuadrito */
+    background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente negro */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 1s;
+    pointer-events: none; /* Esto asegurará que puedas hacer clic en enlaces debajo de la superposición */
+}
+
+.image1:hover .overlay {
+    opacity: 1;
+}
+
+#villa {
+    display: flex;
+    flex-direction: row; /* Asegura que los hijos de villa se alinean en fila */
+    margin-top: 90px;
+    align-items: center; /* Centra los elementos verticalmente */
+    padding: 0 50px; /* Añade un padding para no pegar los elementos a los bordes */
+}
+
+.text2 {
+    max-width: 38%; /* Limita el ancho máximo del texto */
+    order: 1; /* Asegura que el texto venga primero */
+    margin-left: 18%;
+    margin-right: 80px;
+}
+
+.image2 {
+    max-width: 100%; /* Limita el ancho máximo de la imagen */
+    order: 2; /* Asegura que la imagen venga después del texto */
+    margin-left: 0; /* Empuja la imagen hacia el borde derecho del contenedor */
+    margin-right: auto;
+}
+
+/* Para que la imagen se adapte al tamaño de '.image1': */
+.image2 img {
+    width: 100%; /* Hago que la imagen use todo el ancho de '.image1' */
+    height: auto; /* Y que su altura se ajuste automáticamente para mantener la proporción */
+    max-width: 100%; /* Asegúrate de que la imagen no exceda el ancho de su contenedor */
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrar el overlay exactamente en el medio de la imagen */
+    width: 120px; /* Ancho del cuadrito */
+    height: 40px; /* Altura del cuadrito */
+    background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente negro */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 1s;
+    pointer-events: none; /* Esto asegurará que puedas hacer clic en enlaces debajo de la superposición */
+}
+
+.image2:hover .overlay {
+    opacity: 1;
+}
+
+#villa p, #contact h2 {
+    font-size: 2rem; /* Ajusta el tamaño según necesites */
+    margin-bottom: 20px;
+}
+
+#contact {
+    padding: 50px 20px;
     text-align: center;
+    margin-top: 128px;
 }
 
-section#formulario {
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-}
-
-form {
+/* css de suenos */
+#sueños {
+    background-image: url(imgs/DALL·E\ 2024-04-07\ 22.29.07\ -\ Create\ an\ artistic\ collage\ of\ the\ New\ Seven\ Wonders\ of\ the\ World\,\ which\ includes\ the\ Great\ Wall\ of\ China\,\ Petra\,\ Christ\ the\ Redeemer\,\ Machu\ Picchu\,\ Ch.jpg);
+    background-size: cover; /* Hago que la imagen de fondo cubra todo el espacio disponible sin deformarse */
+    background-position: center; /* Centro la imagen de fondo para que se vea bien en cualquier tamaño de pantalla */
+    height: 200vh; /* Establezco la altura de 'hero' para que sea siempre del tamaño total de la altura de la pantalla del usuario */
+    font-family: "Caveat", cursive;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center; /* Asegúrate de que el texto esté centrado */
+    padding: 20px 10%; /* 10% de padding a los lados para dar espacio */
 }
 
-label {
-    margin-bottom: 5px;
+#sueños h1 {
+    color: rgb(0, 0, 0); /* Cambia a blanco para mejor contraste */
+    font-size: 3rem; /* Aumenta el tamaño de la fuente */
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo oscuro para el texto para mejorar la legibilidad */
+    padding: 0.5rem 1rem; /* Espacio alrededor del texto */
+    border-radius: 10px; /* Bordes redondeados si lo deseas */
+    max-width: 800px; /* Ancho máximo del título para controlar el tamaño */
+    margin-bottom: 20px; /* Espacio después del título */
+    margin-top: 120px;
 }
 
-input[type=text],
-input[type=email],
-input[type=number],
-select {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    background-color: #ff3366;
-    margin-top: 16px;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #cc0044;
+#sueños p {
+    color: rgb(0, 0, 0); /* Cambia a blanco para mejor contraste */
+    font-size: 1.5rem; /* Aumenta el tamaño de la fuente */
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo oscuro para el texto para mejorar la legibilidad */
+    padding: 0.5rem 1rem; /* Espacio alrededor del texto */
+    border-radius: 10px; /* Bordes redondeados si lo deseas */
+    max-width: 800px; /* Ancho máximo del párrafo para controlar el tamaño */
+    margin-bottom: 20px;
 }
